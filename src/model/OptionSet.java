@@ -1,6 +1,8 @@
 package model;
 import java.util.ArrayList;
 import java.io.*;
+
+
 public class OptionSet implements Serializable {
     private String name;
     private ArrayList<Option> options;
@@ -71,9 +73,58 @@ public class OptionSet implements Serializable {
         }
     }
 
-    //finders
+    protected Option findOption(String opName) {
+        for (Option option : options)  {
+            if (option.getName().equals(opName)) {
+                return option;
+            }
+        }
+        return null;
+    }
+
+    protected int findOpIndex(String opName) {
+        //uses built in arraylist method indexOf to return index
+        return options.indexOf(opName);
+    }
+
+    protected boolean hasOption(String opName) {
+        for (Option option : options) {
+            if (option.getName().equals(opName)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     //updaters
+    protected boolean updateOpName(String opName, String newName) {
+        int index = findOpIndex(opName);
+        if (index != -1) {
+            setOpName(index, newName);
+            return true;
+        }
+        return false;
+    }
+
+    protected boolean updateOpPrice(String opName, float newPrice) {
+        int index = findOpIndex(opName);
+        if (index != -1) {
+            setOpPrice(index, newPrice);
+            return true;
+        }
+        return false;
+    }
+
+    //updates both name and price at the same time
+    protected boolean updateOption(String opName, String newName, float newPrice) {
+        int index = findOpIndex(opName);
+        if (index != -1) {
+            setOpName(index, newName);
+            setOpPrice(index, newPrice);
+            return true;
+        }
+        return false;
+    }
 
     protected boolean addOption(String opName, float opPrice) {
         //uses the build in arraylist add method and return boolean
@@ -81,6 +132,7 @@ public class OptionSet implements Serializable {
     }
 
     protected boolean deleteOption(int index) {
+        //uses bult in ArrayList's remove method
         if (index < 0 || index >= options.size()) {
             return false;
         }
