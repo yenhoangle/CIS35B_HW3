@@ -32,5 +32,14 @@ public class Option implements Serializable {
         return this.price;
     }
 
+    //setters
+    protected void setName(String name) {
+        this.name = name;
+    }
 
+    protected void setPrice(float price) {
+        this.price = price;
+    }
+
+    //TODO: toString / print
 }
