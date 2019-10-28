@@ -132,12 +132,18 @@ public class OptionSet implements Serializable {
     }
 
     protected boolean deleteOption(int index) {
-        //uses bult in ArrayList's remove method
+        //uses built in ArrayList's remove method
         if (index < 0 || index >= options.size()) {
             return false;
         }
         options.remove(index);
         return true;
+    }
+
+    protected boolean deleteOption(String opname) {
+        //null checks and index out of bound performed by findOp and the other deleteOption method
+        int deleteIndex = findOpIndex(opname);
+        return deleteOption(deleteIndex);
     }
 
     //TODO: toString / print
