@@ -192,6 +192,17 @@ public class Automotive implements Serializable {
         }
         return false;
     }
-    //TODO: TOSTRING / PRINT
+
+    //print method for the Automotive object
+    public void print() {
+        System.out.printf("%s\nBase Price: $%.2f\n", getName(), baseprice);
+        if (optionSets != null) {
+            for(OptionSet opset : optionSets) {
+                if (!opset.equals(null)) {
+                    opset.print();
+                }
+            }
+        }
+    }
 
 }

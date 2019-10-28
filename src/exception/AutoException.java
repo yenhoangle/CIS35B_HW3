@@ -13,7 +13,8 @@ public class AutoException extends Exception{
 
     //messages for logging purposes
     private static String BAD_FILENAME = "Invalid Filename";
-    private static String BAD_AUTO_NAME = "Invalid Auto Name";
+    private static String BAD_AUTO_MAKE = "Invalid Auto Make";
+    private static String BAD_AUTO_MODEL = "Invalid Auto Model"; //added for fix6
     private static String BAD_BASE = "Invalid Base Price";
     private static String BAD_OPSET_NAME = "Invalid Option Set Name";
     private static String BAD_OP_NAME = "Invalid Option Name";
@@ -48,9 +49,41 @@ public class AutoException extends Exception{
     }
     public void setAuto(Automotive auto) {this.auto = auto; }
 
-    //TODO FIX METHOD
+    //for fixing the file in order to build a proper Automotive, calls helper methods
     public void fix(int errno, Automotive car) {
+        auto = car;
+        FixExceptions fixer = new FixExceptions();
+        log();
+        switch(errno) {
+            case 1:
+                errMessage = BAD_FILENAME;
+                break;
+            case 2:
+                errMessage = BAD_AUTO_MAKE;
+                fixer.fix2(errno, car);
+                break;
 
+            case 3:
+                errMessage = BAD_BASE;
+                fixer.fix3(errno, car);
+                break;
+
+            case 4:
+                errMessage = BAD_OPSET_NAME;
+                fixer.fix4(errno, car);
+                break;
+            case 5:
+                errMessage = BAD_OP_NAME;
+                fixer.fix5(errno, car);
+                break;
+            case 6:
+                errMessage = BAD_AUTO_MODEL;
+                fixer.fix6(errno, car);
+
+            default:
+                errMessage = UNEXPECTED_EXCEPTION;
+                log();
+        }
     }
 
     //logger method to write error to a file

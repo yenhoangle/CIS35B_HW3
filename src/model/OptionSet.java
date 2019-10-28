@@ -147,4 +147,12 @@ public class OptionSet implements Serializable {
     }
 
     //TODO: toString / print
+    protected void print() {
+        System.out.printf("Option Set Name: %s\n", name);
+        for (Option op : options) {
+            if (!op.equals(null)) {
+                op.print();
+            }
+        }
+    }
 }

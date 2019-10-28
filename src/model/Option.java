@@ -41,5 +41,7 @@ public class Option implements Serializable {
         this.price = price;
     }
 
-    //TODO: toString / print
+    protected void print() {
+        System.out.printf("- %s: $%.2f\n", name, price);
+    }
 }
