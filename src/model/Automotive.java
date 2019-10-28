@@ -8,7 +8,7 @@ public class Automotive implements Serializable {
     private String make;
     private String model;
     private float baseprice;
-    private ArrayList<OptionSet> optionSet;
+    private ArrayList<OptionSet> optionSets;
     private ArrayList<Option> choices; //choices is an array list of options chosen
 
     //constructors
@@ -24,7 +24,7 @@ public class Automotive implements Serializable {
         this.make = make;
         this.model = model;
         this.baseprice = baseprice;
-        optionSet = new ArrayList<OptionSet>();
+        optionSets = new ArrayList<OptionSet>();
         choices = new ArrayList<Option>();
     }
 
@@ -45,12 +45,60 @@ public class Automotive implements Serializable {
         return baseprice;
     }
 
-    public ArrayList getOpset() {
-        return optionSet;
+    public ArrayList getOpsets() {
+        return optionSets;
+    }
+
+    //TODO: FINISH THIS
+    public Option getOptionChoice(String opsetName) {
+        return null;
     }
 
     //get opchoice, get opchoiceprice, set opchoice, get totalprice
     //setters
+    public void setMake(String make) {
+        this.make = make;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public void setBaseprice(float price) {
+        this.baseprice = price;
+    }
+
+    public void setOptionChoice(String opsetName, String opName) {
+        //break it down to do null checks
+        OptionSet foundOpSet = findOpset(opsetName);
+        if (foundOpSet != null) {
+            int foundOptionIndex = foundOpSet.findOpIndex(opName);
+            if (foundOptionIndex != -1) {
+                foundOpSet.setOpChoice(foundOptionIndex);
+            }
+        }
+        //TODO: UPDATE choices
+    }
+
+    public int findOpsetIndex(String opsetName) {
+        for (OptionSet opset : optionSets) {
+            if (opset.getName().equals(opsetName)) {
+                //use built in arraylist method to find index
+                return optionSets.indexOf(opset);
+            }
+        }
+        //not found
+        return -1;
+    }
+
+    public OptionSet findOpset(String opsetName) {
+        for (OptionSet opset : optionSets) {
+            if (opset.getName().equals(opsetName)) {
+                return opset;
+            }
+        }
+        return null;
+    }
     //TODO: TOSTRING / PRINT
 
 }
