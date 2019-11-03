@@ -22,14 +22,34 @@ public class AutoException extends Exception{
 
     //constructors
     public AutoException() {
-        //super();
+        super();
     }
 
     public AutoException(int errno) {
-        //super();
+        super();
         this.errno = errno;
-        //default message
-        this.errMessage = BAD_FILENAME;
+        switch(errno) {
+            case 1:
+                errMessage = BAD_FILENAME;
+                break;
+            case 2:
+                errMessage = BAD_AUTO_MAKE;
+                break;
+            case 3:
+                errMessage = BAD_BASE;
+                break;
+            case 4:
+                errMessage = BAD_OPSET_NAME;
+                break;
+            case 5:
+                errMessage = BAD_OP_NAME;
+                break;
+            case 6:
+                errMessage = BAD_AUTO_MODEL;
+                break;
+            default:
+                errMessage = UNEXPECTED_EXCEPTION;
+        }
     }
 
     //getters
@@ -56,32 +76,22 @@ public class AutoException extends Exception{
         log();
         switch(errno) {
             case 1:
-                errMessage = BAD_FILENAME;
                 break;
             case 2:
-                errMessage = BAD_AUTO_MAKE;
                 fixer.fix2(errno, car);
                 break;
-
             case 3:
-                errMessage = BAD_BASE;
                 fixer.fix3(errno, car);
                 break;
-
             case 4:
-                errMessage = BAD_OPSET_NAME;
                 fixer.fix4(errno, car);
                 break;
             case 5:
-                errMessage = BAD_OP_NAME;
                 fixer.fix5(errno, car);
                 break;
             case 6:
-                errMessage = BAD_AUTO_MODEL;
                 fixer.fix6(errno, car);
-
             default:
-                errMessage = UNEXPECTED_EXCEPTION;
                 log();
         }
     }
