@@ -116,9 +116,8 @@ public class Automotive implements Serializable {
         return false;
     }
 
-    public boolean addOption(String opsetName, String opname, float opPrice) {
+    public boolean addOption(int opsetIndex, String opname, float opPrice) {
         if (opname != null && opname != null) {
-            int opsetIndex = findOpsetIndex(opsetName);
             if (opsetIndex != -1) {
                 return optionSets.get(opsetIndex).addOption(opname, opPrice);
 
