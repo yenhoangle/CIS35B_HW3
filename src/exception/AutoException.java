@@ -14,7 +14,8 @@ public class AutoException extends Exception{
     //messages for logging purposes
     private static String BAD_FILENAME = "Invalid Filename";
     private static String BAD_AUTO_MAKE = "Invalid Auto Make";
-    private static String BAD_AUTO_MODEL = "Invalid Auto Model"; //added for fix6
+    private static String BAD_AUTO_MODEL = "Invalid Auto Model";
+    private static String BAD_AUTO_YEAR = "Invalid Auto Year";
     private static String BAD_BASE = "Invalid Base Price";
     private static String BAD_OPSET_NAME = "Invalid Option Set Name";
     private static String BAD_OP_NAME = "Invalid Option Name";
@@ -46,6 +47,9 @@ public class AutoException extends Exception{
                 break;
             case 6:
                 errMessage = BAD_AUTO_MODEL;
+                break;
+            case 7:
+                errMessage = BAD_AUTO_YEAR;
                 break;
             default:
                 errMessage = UNEXPECTED_EXCEPTION;
@@ -91,6 +95,8 @@ public class AutoException extends Exception{
                 break;
             case 6:
                 fixer.fix6(errno, car);
+            case 7:
+                fixer.fix7(errno, car);
             default:
                 log();
         }

@@ -75,11 +75,11 @@ public class FixExceptions {
         }
     }
 
-    //fix for invalid auto make - error num: 2
+    //fix for invalid auto model - error num: 6
     public void fix6(int errno, Automotive auto) {
         boolean valid = false;
         while(!valid) {
-            System.out.println("Please enter the Automotive mode: ");
+            System.out.println("Please enter the Automotive model: ");
             Scanner scanner = new Scanner(System.in);
             String input = scanner.nextLine().trim();
 
@@ -89,6 +89,23 @@ public class FixExceptions {
             valid = true;
             //autoname = input;
             auto.setModel(input);
+        }
+    }
+
+    //fix for invalid auto year - error num: 7
+    public void fix7(int errno, Automotive auto) {
+        boolean valid = false;
+        while(!valid) {
+            System.out.println("Please enter the Automotive year: ");
+            Scanner scanner = new Scanner(System.in);
+            String input = scanner.nextLine().trim();
+
+            if (input.isEmpty()) {
+                continue;
+            }
+            valid = true;
+            //autoname = input;
+            auto.setYear(input);
         }
     }
 }

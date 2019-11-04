@@ -71,6 +71,9 @@ public class FileIO {
             }
 
             //TODO: FINISH IO
+            while (!eof) {
+
+            }
 
         } catch (FileNotFoundException fnf) {
             System.out.println("FNF");

@@ -7,22 +7,24 @@ public class Automotive implements Serializable {
     //separate variables to hold make and model, make + model = full name
     private String make;
     private String model;
+    private String year;
     private float baseprice;
     private ArrayList<OptionSet> optionSets;
     private ArrayList<Option> choices; //choices is an array list of options chosen
 
     //constructors
     public Automotive() {
-        this("", "", 0);
+        this("", "", "",0);
     }
 
     public Automotive(float baseprice) {
-        this("","", baseprice);
+        this("","", "", baseprice);
     }
 
-    public Automotive(String make, String model, float baseprice ) {
+    public Automotive(String make, String model, String year, float baseprice ) {
         this.make = make;
         this.model = model;
+        this.year = year;
         this.baseprice = baseprice;
         optionSets = new ArrayList<OptionSet>();
         choices = new ArrayList<Option>();
@@ -30,17 +32,15 @@ public class Automotive implements Serializable {
 
     //getters
     public String getName() {
-        return(make + " " + model);
+        return(make + " " + model + " " + year);
     }
-
     public String getMake() {
         return make;
     }
-
     public String getModel() {
         return model;
     }
-
+    public String getYear() {return year; }
     public float baseprice() {
         return baseprice;
     }
@@ -63,6 +63,8 @@ public class Automotive implements Serializable {
     public void setModel(String model) {
         this.model = model;
     }
+
+    public void setYear(String year) { this.year = year; }
 
     public void setBaseprice(float price) {
         this.baseprice = price;
