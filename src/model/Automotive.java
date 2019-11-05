@@ -41,7 +41,7 @@ public class Automotive implements Serializable {
         return model;
     }
     public String getYear() {return year; }
-    public float baseprice() {
+    public float getBaseprice() {
         return baseprice;
     }
 
@@ -49,9 +49,18 @@ public class Automotive implements Serializable {
         return optionSets;
     }
 
-    //TODO: FINISH THIS
+    //get option chosen for a given option set
     public Option getOptionChoice(String opsetName) {
-        return null;
+        int opsetIndex = findOpsetIndex(opsetName);
+        return optionSets.get(opsetIndex).getOpChoice();
+    }
+
+    public String getChoiceName(String opsetName) {
+        return getOptionChoice(opsetName).getName();
+    }
+
+    public float getChoicePrice(String opsetName) {
+        return getOptionChoice(opsetName).getPrice();
     }
 
     //get opchoice, get opchoiceprice, set opchoice, get totalprice
@@ -194,6 +203,18 @@ public class Automotive implements Serializable {
         return false;
     }
 
+    public void clearChoices() {
+        this.choices.clear();
+    }
+
+    public float getTotalPrice() {
+        float total = this.getBaseprice();
+        for(int i = 0; i < choices.size(); i++) {
+            total += choices.get(i).getPrice();
+        }
+        return total;
+    }
+
     //print method for the Automotive object
     public void print() {
         System.out.printf("%s\nBase Price: $%.2f\n", getName(), baseprice);
@@ -203,6 +224,14 @@ public class Automotive implements Serializable {
                     opset.print();
                 }
             }
+        }
+    }
+
+    public void printChoices() {
+        //TODO
+        System.out.printf("%s with selected options:\n", getName());
+        for (Option op : choices) {
+            op.print();
         }
     }
 }
