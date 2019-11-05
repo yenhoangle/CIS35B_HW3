@@ -1,8 +1,8 @@
 package adapter;
 
 public interface ConfigureAuto {
-    //setOpChoice -- method in auto
-    //setOpChoices (optional)
+    //setChoice -- method in auto
+    //setChoices (optional)
     //calculatePrice -- method in auto
     //printChoices
 }

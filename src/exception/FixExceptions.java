@@ -87,7 +87,6 @@ public class FixExceptions {
                 continue;
             }
             valid = true;
-            //autoname = input;
             auto.setModel(input);
         }
     }
@@ -104,7 +103,6 @@ public class FixExceptions {
                 continue;
             }
             valid = true;
-            //autoname = input;
             auto.setYear(input);
         }
     }

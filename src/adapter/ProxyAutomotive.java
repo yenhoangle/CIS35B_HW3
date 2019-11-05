@@ -4,4 +4,5 @@ import model.Automotive;
 import util.FileIO;
 
 public class ProxyAutomotive {
+
 }
