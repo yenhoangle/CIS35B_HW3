@@ -205,5 +205,4 @@ public class Automotive implements Serializable {
             }
         }
     }
-
 }

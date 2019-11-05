@@ -38,7 +38,7 @@ public class AutoTemplate {
     public void printAllAutos() {
         for (String autoKey: autoMap.keySet()) {
             System.out.println("Printing all Automotives");
-            System.out.println(autoKey);
+            System.out.println("[" + autoKey + "}");
         }
     }
 }
