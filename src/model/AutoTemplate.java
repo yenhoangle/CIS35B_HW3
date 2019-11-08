@@ -2,14 +2,15 @@ package model;
 
 import java.util.*;
 
-public class AutoTemplate {
-    private static LinkedHashMap<String, Automotive> autoMap;
+//need to change this into generics
+public class AutoTemplate<A extends Automotive> {
+    private LinkedHashMap<String, A> autoMap;
 
     public AutoTemplate() {
-        autoMap = new LinkedHashMap<String, Automotive>();
+        autoMap = new LinkedHashMap<String, A>();
     }
 
-    public LinkedHashMap<String, Automotive> getAutoTemplate() {
+    public LinkedHashMap<String, A> getAutoTemplate() {
         return autoMap;
     }
 
@@ -17,17 +18,17 @@ public class AutoTemplate {
         return autoMap.get(key);
     }
 
-    public void setAutoTemplate(LinkedHashMap<String, Automotive> newMap) {
+    public void setAutoTemplate(LinkedHashMap<String, A> newMap) {
         autoMap = newMap;
     }
 
-    public void addAuto(String key, Automotive auto) {
-        autoMap.put(key, auto);
+    public void addAuto(String key, A vehicle) {
+        autoMap.put(key, vehicle);
     }
 
     //for replacing an entire auto object but keeping the same key
-    public void updateAuto(String key, Automotive newAuto) {
-        autoMap.put(key, newAuto);
+    public void updateAuto(String key, A newVehicle) {
+        autoMap.put(key, newVehicle);
     }
 
     public void deleteAuto(String key) {
@@ -35,7 +36,7 @@ public class AutoTemplate {
     }
 
     //using keySet to print all keys
-    public void printAllAutos() {
+    public void printAllVehicles() {
         for (String autoKey: autoMap.keySet()) {
             System.out.println("Printing all Automotives");
             System.out.println("[" + autoKey + "}");
