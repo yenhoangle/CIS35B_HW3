@@ -2,10 +2,14 @@ package adapter;
 import exception.AutoException;
 import model.AutoTemplate;
 import model.Automotive;
+import model.Option;
 import util.FileIO;
-import java.util.LinkedHashMap;
 
-public class ProxyAutomotive {
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.Scanner;
+
+public abstract class ProxyAutomotive {
     private static AutoTemplate at1;
     private static Automotive a1;
 
@@ -39,12 +43,26 @@ public class ProxyAutomotive {
     }
     //TODO
     //implements ConfigureAuto interface methods
-    public void setChoices() {
+    public void pickChoices() {
+        Scanner scanner = new Scanner(System.in);
+        //clear existing choices so user can pick again
+        if (a1.getChoices().size() > 0) {
+            a1.clearChoices();
+        }
+        for (int i = 0; i < a1.getOpsets().size(); i++) {
+            boolean done = false;
+            while(!done) {
+                String opsetName = a1.getOpSetName(i);
+                System.out.println("Please enter choice for " + opsetName);
+                //TODO: FINISH THIS
+            }
+        }
+
 
     }
 
     public void printChoices() {
-
+        a1.printChoices();
     }
     public float calculatePrice() {
         return a1.getTotalPrice();

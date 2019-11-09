@@ -49,7 +49,19 @@ public class Automotive implements Serializable {
         return optionSets;
     }
 
-    //get option chosen for a given option set
+    public ArrayList getChoices() {
+        return choices;
+    }
+
+    public OptionSet getOpSet(int index) {
+        return optionSets.get(index);
+    }
+
+    public String getOpSetName(int index) {
+        return getOpSet(index).getName();
+    }
+
+        //get option chosen for a given option set
     public Option getOptionChoice(String opsetName) {
         int opsetIndex = findOpsetIndex(opsetName);
         return optionSets.get(opsetIndex).getOpChoice();
