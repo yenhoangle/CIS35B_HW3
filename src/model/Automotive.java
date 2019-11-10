@@ -91,18 +91,6 @@ public class Automotive implements Serializable {
         this.baseprice = price;
     }
 
-    public void setOptionChoice(String opsetName, String opName) {
-        //break it down to do null checks
-        OptionSet foundOpSet = findOpset(opsetName);
-        if (foundOpSet != null) {
-            int foundOptionIndex = foundOpSet.findOpIndex(opName);
-            if (foundOptionIndex != -1) {
-                foundOpSet.setOpChoice(foundOptionIndex);
-            }
-        }
-        //TODO: UPDATE choices
-    }
-
     public void setChoices(ArrayList<Option> choices) {
         this.choices = choices;
     }
@@ -127,6 +115,14 @@ public class Automotive implements Serializable {
         return null;
     }
 
+    public Option findOption(String opsetName, String opName) {
+        if (opsetName != null && opName != null) {
+            OptionSet opset = findOpset(opsetName);
+            return opset.findOption(opName);
+        }
+        return null;
+    }
+
     //add methods
     public boolean addOpset(String name){
         if (name != null) {
@@ -145,6 +141,19 @@ public class Automotive implements Serializable {
             }
         }
         return false;
+    }
+
+    public void addOptionChoice(String opsetName, String opName) {
+        //break it down to do null checks
+        OptionSet foundOpSet = findOpset(opsetName);
+        if (foundOpSet != null) {
+            int foundOptionIndex = foundOpSet.findOpIndex(opName);
+            if (foundOptionIndex != -1) {
+                foundOpSet.setOpChoice(foundOptionIndex);
+            }
+            //update choices
+            choices.add(foundOpSet.getOption(foundOptionIndex));
+        }
     }
 
     //update methods

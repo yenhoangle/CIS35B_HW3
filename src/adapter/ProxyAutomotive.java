@@ -2,11 +2,7 @@ package adapter;
 import exception.AutoException;
 import model.AutoTemplate;
 import model.Automotive;
-import model.Option;
 import util.FileIO;
-
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.Scanner;
 
 public abstract class ProxyAutomotive {
@@ -41,7 +37,7 @@ public abstract class ProxyAutomotive {
     //implements FixAuto interface method
     public void fix(int errno)  {
     }
-    //TODO
+
     //implements ConfigureAuto interface methods
     public void pickChoices() {
         Scanner scanner = new Scanner(System.in);
@@ -54,11 +50,18 @@ public abstract class ProxyAutomotive {
             while(!done) {
                 String opsetName = a1.getOpSetName(i);
                 System.out.println("Please enter choice for " + opsetName);
-                //TODO: FINISH THIS
+                String opNameChosen = scanner.next();
+                //search optionset for option choice with name to check validity
+                if (a1.findOption(opsetName, opNameChosen) != null) {
+                    //put that choice in choices arraylist
+                    a1.addOptionChoice(opsetName, opNameChosen);
+                    done = true;
+                }
+                else {
+                    System.out.println("Invalid choice");
+                }
             }
         }
-
-
     }
 
     public void printChoices() {
