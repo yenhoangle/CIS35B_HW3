@@ -18,7 +18,6 @@ public abstract class ProxyAutomotive {
     public void buildAuto(String filename) throws AutoException {
         FileIO fileIO = new FileIO();
         a1 = fileIO.buildAutoObject(filename);
-        at1.addVehicle(a1.getName(), a1); //also add a1 to the hash map
     }
 
     public void printAuto(String modelName) {
@@ -62,6 +61,7 @@ public abstract class ProxyAutomotive {
                 }
             }
         }
+        at1.addVehicle(a1.getName(), a1); //also add a1 to the hash map
     }
 
     public void printChoices() {
