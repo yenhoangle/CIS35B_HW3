@@ -18,6 +18,7 @@ public abstract class ProxyAutomotive {
     public void buildAuto(String filename) throws AutoException {
         FileIO fileIO = new FileIO();
         a1 = fileIO.buildAutoObject(filename);
+        at1.addVehicle(a1.getName(), a1); //also add a1 to the hash map
     }
 
     public void printAuto(String modelName) {
@@ -38,7 +39,7 @@ public abstract class ProxyAutomotive {
     }
 
     //implements ConfigureAuto interface methods
-    public void pickChoices() {
+    public void selectChoices() {
         Scanner scanner = new Scanner(System.in);
         //clear existing choices so user can pick again
         if (a1.getChoices().size() > 0) {
@@ -61,7 +62,9 @@ public abstract class ProxyAutomotive {
                 }
             }
         }
-        at1.addVehicle(a1.getName(), a1); //also add a1 to the hash map
+        //update hashmap entry to contain selected options
+        at1.updateVehicle(a1.getName(), a1);
+
     }
 
     public void printChoices() {

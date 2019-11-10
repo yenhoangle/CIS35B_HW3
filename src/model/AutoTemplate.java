@@ -14,7 +14,7 @@ public class AutoTemplate<A extends Automotive> {
         return autoMap;
     }
 
-    public Automotive getAuto(String key) {
+    public Automotive getVehicle(String key) {
         return autoMap.get(key);
     }
 
