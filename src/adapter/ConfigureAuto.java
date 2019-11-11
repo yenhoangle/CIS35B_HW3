@@ -1,7 +1,7 @@
 package adapter;
 
 public interface ConfigureAuto {
-    public void selectChoices();
-    public void printChoices();
-    public float calculatePrice();
+    public void selectChoices(String key);
+    public void printChoices(String key);
+    public float calculatePrice(String key);
 }

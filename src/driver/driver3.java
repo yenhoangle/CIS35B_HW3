@@ -13,34 +13,37 @@ public class driver3 {
             boolean complete = false;
             String file = "C:\\Users\\Arteh\\IdeaProjects\\CIS35B_HW3\\textfiles\\ffw.txt";
             //a different file for a new car
-            String file2 = "C:\\Users\\Arteh\\IdeaProjects\\CIS35B_HW3\\textfiles\\ffrs.txt"; //TODO: make a file
-            CreateAuto a1 = new BuildAuto();
-            CreateAuto a2 = new BuildAuto();
+            String file2 = "C:\\Users\\Arteh\\IdeaProjects\\CIS35B_HW3\\textfiles\\ffrs.txt";
+            BuildAuto a1 = new BuildAuto();
+            BuildAuto a2 = new BuildAuto();
             UpdateAuto ua = new BuildAuto();
             ConfigureAuto ca = new BuildAuto();
+            String name1 = "Ford Focus Wagon ZTW 2012";
+            String name2 = "Ford Focus RS 2017";
 
             FileIO fileIO = new FileIO();
             //attempting to build the car
-            System.out.println("Attempting to build the cars");
+            System.out.println("Attempting to build the cars...");
             a1.buildAuto(file);
             a2.buildAuto(file2);
-            System.out.println("\nPrinting the first auto after building");
-            a1.printAuto("");
-            System.out.println("\nPrinting the second auto after building");
-            a2.printAuto("");
+            System.out.println("Printing the first car after building...");
+            a1.printAuto(name1);
+            System.out.println("\nPrinting the second car after building...");
+            a2.printAuto(name2);
 
             // update the Automobile's options
-            System.out.println("\nUpdating car's option set name");
-            ua.updateOptionSetName("Ford Focus Wagon ZTW", "Color", "Colour");
-            System.out.println("Updating car's option price");
-            ua.updateOptionPrice("Ford Focus Wagon ZTW",
+            System.out.println("\nUpdating car's option set name...");
+            ua.updateOptionSetName(name2, "Color", "Colour");
+            System.out.println("Updating the second car's option price...");
+            ua.updateOptionPrice(name2,
                     "Transmission", "Manual", -800);
-            System.out.println("\nPrinting the auto after updating");
-            a1.printAuto("");
-            ca.selectChoices();
-            ca.printChoices();
-            float price = ca.calculatePrice();
-            System.out.println("Total cost after selecting options is: " + price);
+            System.out.println("\nPrinting the second car after updating...");
+            a2.printAuto(name2);
+            System.out.println("\nTesting choice operations on the first car...");
+            ca.selectChoices(name1);
+            ca.printChoices(name1);
+            float price = ca.calculatePrice(name1);
+            System.out.println("\nTotal cost after selecting options is: " + price);
         } catch (AutoException ae) {
 
         }
