@@ -21,6 +21,7 @@ public abstract class ProxyAutomotive {
         at1.addVehicle(a1.getName(), a1); //also add a1 to the hash map
     }
 
+    //TODO: probably will need to find the auto first before doing other methods?
     public void printAuto(String modelName) {
         a1.print();
     }
@@ -50,7 +51,7 @@ public abstract class ProxyAutomotive {
             while(!done) {
                 String opsetName = a1.getOpSetName(i);
                 System.out.println("Please enter choice for " + opsetName);
-                String opNameChosen = scanner.next();
+                String opNameChosen = scanner.nextLine();
                 //search optionset for option choice with name to check validity
                 if (a1.findOption(opsetName, opNameChosen) != null) {
                     //put that choice in choices arraylist

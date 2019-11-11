@@ -11,9 +11,9 @@ public class driver3 {
     public static void main(String[] args) throws AutoException {
         try {
             boolean complete = false;
-            String file = "C:\\Users\\Arteh\\IdeaProjects\\CIS35B_HW2\\textfiles\\missingAutoName.txt";
+            String file = "C:\\Users\\Arteh\\IdeaProjects\\CIS35B_HW3\\textfiles\\ffw.txt";
             //a different file for a new car
-            String file2 = ""; //TODO: make a file
+            String file2 = "C:\\Users\\Arteh\\IdeaProjects\\CIS35B_HW3\\textfiles\\ffrs.txt"; //TODO: make a file
             CreateAuto a1 = new BuildAuto();
             CreateAuto a2 = new BuildAuto();
             UpdateAuto ua = new BuildAuto();
@@ -38,8 +38,9 @@ public class driver3 {
             System.out.println("\nPrinting the auto after updating");
             a1.printAuto("");
             ca.selectChoices();
+            ca.printChoices();
             float price = ca.calculatePrice();
-            System.out.println("Total cost after selecting option is: " + price);
+            System.out.println("Total cost after selecting options is: " + price);
         } catch (AutoException ae) {
 
         }
