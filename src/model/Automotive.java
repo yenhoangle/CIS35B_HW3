@@ -1,6 +1,8 @@
 package model;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Scanner;
+
 import model.*;
 
 public class Automotive implements Serializable {
@@ -45,11 +47,11 @@ public class Automotive implements Serializable {
         return baseprice;
     }
 
-    public ArrayList getOpsets() {
+    public ArrayList<OptionSet> getOpsets() {
         return optionSets;
     }
 
-    public ArrayList getChoices() {
+    public ArrayList<Option> getChoices() {
         return choices;
     }
 
@@ -143,17 +145,8 @@ public class Automotive implements Serializable {
         return false;
     }
 
-    public void addOptionChoice(String opsetName, String opName) {
-        //break it down to do null checks
-        OptionSet foundOpSet = findOpset(opsetName);
-        if (foundOpSet != null) {
-            int foundOptionIndex = foundOpSet.findOpIndex(opName);
-            if (foundOptionIndex != -1) {
-                foundOpSet.setOpChoice(foundOptionIndex);
-            }
-            //update choices
-            choices.add(foundOpSet.getOption(foundOptionIndex));
-        }
+    public void addOptionChoice(Option choice) {
+        choices.add(choice);
     }
 
     //update methods
@@ -228,6 +221,32 @@ public class Automotive implements Serializable {
         this.choices.clear();
     }
 
+    public void selectChoices() {
+        Scanner scanner = new Scanner(System.in);
+        //clear existing choices so user can pick again
+        if (getChoices().size() > 0) {
+            clearChoices();
+        }
+        for (int i = 0; i < getOpsets().size(); i++) {
+            boolean done = false;
+            while(!done) {
+                String opsetName = getOpSetName(i);
+                System.out.println("Please enter choice for " + opsetName);
+                String opNameChosen = scanner.nextLine().trim();
+                //search optionset for option choice with name to check validity
+                Option chosen = findOption(opsetName, opNameChosen);
+                if (chosen != null) {
+                    //put that choice in choices arraylist
+                    addOptionChoice(chosen);
+                    done = true;
+                }
+                else {
+                    System.out.println("Invalid choice");
+                }
+            }
+        }
+    }
+
     public float getTotalPrice() {
         float total = this.getBaseprice();
         for(int i = 0; i < choices.size(); i++) {
@@ -236,14 +255,14 @@ public class Automotive implements Serializable {
         return total;
     }
 
+
+
     //print method for the Automotive object
     public void print() {
         System.out.printf("%s\nBase Price: $%.2f\n", getName(), baseprice);
         if (optionSets != null) {
             for(OptionSet opset : optionSets) {
-                if (!opset.equals(null)) {
-                    opset.print();
-                }
+                opset.print();
             }
         }
     }
@@ -251,8 +270,10 @@ public class Automotive implements Serializable {
     public void printChoices() {
         //TODO
         System.out.printf("%s with selected options:\n", getName());
-        for (Option op : choices) {
-            op.print();
+        if (choices != null) {
+            for (Option op : choices) {
+                op.print();
+            }
         }
     }
 }

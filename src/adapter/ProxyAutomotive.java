@@ -41,34 +41,13 @@ public abstract class ProxyAutomotive {
 
     //implements ConfigureAuto interface methods
     public void selectChoices() {
-        Scanner scanner = new Scanner(System.in);
-        //clear existing choices so user can pick again
-        if (a1.getChoices().size() > 0) {
-            a1.clearChoices();
-        }
-        for (int i = 0; i < a1.getOpsets().size(); i++) {
-            boolean done = false;
-            while(!done) {
-                String opsetName = a1.getOpSetName(i);
-                System.out.println("Please enter choice for " + opsetName);
-                String opNameChosen = scanner.nextLine();
-                //search optionset for option choice with name to check validity
-                if (a1.findOption(opsetName, opNameChosen) != null) {
-                    //put that choice in choices arraylist
-                    a1.addOptionChoice(opsetName, opNameChosen);
-                    done = true;
-                }
-                else {
-                    System.out.println("Invalid choice");
-                }
-            }
-        }
+        a1.selectChoices();
         //update hashmap entry to contain selected options
         at1.updateVehicle(a1.getName(), a1);
-
     }
 
     public void printChoices() {
+        System.out.println("Choice list size is: " + a1.getChoices().size());
         a1.printChoices();
     }
     public float calculatePrice() {
