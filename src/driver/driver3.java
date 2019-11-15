@@ -1,3 +1,13 @@
+/*
+ * Yen Le
+ * 20123455
+ *
+ * Driver class that tests out the interface methods to make sure they are compatible with  the ArrayList and \
+ * LinkedHashMap implementation. Building the car, updating the options and option sets, as well as choice selection
+ * and display are tested for three different files: ffw.txt, fes.txt. and ffrs.txt. The output of the test runs
+ * is located in textfiles/output.txt
+ *
+ */
 package driver;
 
 import adapter.BuildAuto;
@@ -18,7 +28,7 @@ public class driver3 {
             BuildAuto a2 = new BuildAuto();
             UpdateAuto ua = new BuildAuto();
             ConfigureAuto ca = new BuildAuto();
-            //String name1 = "Ford Focus Wagon ZTW 2012"; //name of first car
+            //String name1 = "Ford Focus Wagon ZTW 2012"; //name of the first car
             String name1 = "Ford Electric Scooter XL 2020"; //name of the first car
             String name2 = "Ford Focus RS 2017"; //name of second car
 
