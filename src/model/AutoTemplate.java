@@ -1,8 +1,14 @@
+/*
+* Yen Le
+* 20123455
+*
+* Generic class that takes in objects which extends the Automotive class and stores them in a linked hash map. It
+* also contains methods for updating, retrieving, and printing these objects
+*
+*/
 package model;
 
 import java.util.*;
-
-//need to change this into generics
 public class AutoTemplate<A extends Automotive> {
     private LinkedHashMap<String, A> autoMap;
 

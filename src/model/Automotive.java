@@ -1,3 +1,11 @@
+/*
+ * Yen Le
+ * 20123455
+ *
+ * Class that represents an Automotive object. It contains variables that identify the Automotive,
+ *  an ArrayList of option sets, as well as an ArrayList of choices a user can make in selecting a car to buy.
+ *
+ */
 package model;
 import java.io.*;
 import java.util.ArrayList;
@@ -152,7 +160,10 @@ public class Automotive implements Serializable {
     //update methods
     public void updateOpsetName(String name, String newName) {
         if (name != null && newName != null) {
-            findOpset(name).setName(newName);
+            OptionSet opset = findOpset(name);
+            if (opset != null) {
+                opset.setName(newName);
+            }
         }
     }
 
@@ -268,7 +279,6 @@ public class Automotive implements Serializable {
     }
 
     public void printChoices() {
-        //TODO
         System.out.printf("%s with selected options:\n", getName());
         if (choices != null) {
             for (Option op : choices) {

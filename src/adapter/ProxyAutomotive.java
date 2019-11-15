@@ -1,9 +1,16 @@
+/*
+ * Yen Le
+ * 20123455
+ *
+ * Class which implements interface methods for its child class BuildAuto so that BuildAuto can remain empty
+ *
+ */
+
 package adapter;
 import exception.AutoException;
 import model.AutoTemplate;
 import model.Automotive;
 import util.FileIO;
-import java.util.Scanner;
 
 public abstract class ProxyAutomotive {
     private static AutoTemplate at1;
@@ -36,6 +43,7 @@ public abstract class ProxyAutomotive {
 
     //implements FixAuto interface method
     public void fix(int errno)  {
+        //implemented in FileIO
     }
 
     //implements ConfigureAuto interface methods
@@ -50,6 +58,7 @@ public abstract class ProxyAutomotive {
     public void printChoices(String key) {
         at1.getVehicle(key).printChoices();
     }
+
     public float calculatePrice(String key) {
         return at1.getVehicle(key).getTotalPrice();
     }
