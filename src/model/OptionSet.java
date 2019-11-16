@@ -6,7 +6,7 @@ import java.io.*;
 public class OptionSet implements Serializable {
     private String name;
     private ArrayList<Option> options;
-    private Option choice;
+    private Option choice; //added to keep track of user selection
 
     //constructors
     protected OptionSet() {

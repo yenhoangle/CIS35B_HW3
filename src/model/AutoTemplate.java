@@ -3,7 +3,7 @@
 * 20123455
 *
 * Generic class that takes in objects which extends the Automotive class and stores them in a linked hash map. It
-* also contains methods for updating, retrieving, and printing these objects
+* also contains methods for updating, retrieving, and printing these objects.
 *
 */
 package model;

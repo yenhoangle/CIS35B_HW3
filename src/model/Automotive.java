@@ -11,8 +11,6 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import model.*;
-
 public class Automotive implements Serializable {
     //separate variables to hold make and model, make + model = full name
     private String make;
